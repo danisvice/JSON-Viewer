@@ -31,12 +31,12 @@ fn main(){
     }
     "#;
 
-    let parsed: Article = read_json_typed(json);
-    
+    let parsed: Article = serde_json::from_str(json).unwrap();
+
     println!("\n\n The name of the first paragraph is : {}", parsed.paragraph[0].name);
 }
 
-fn read_json_typed(raw_json : &str) -> Article {
+fn read_json_typed(raw_json: &str) -> Article {
     let parsed: Article = serde_json::from_str(raw_json).unwrap();
     return parsed
 }
